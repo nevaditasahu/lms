@@ -2,7 +2,6 @@ package kr.ac.mju;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GradeController {
 	private static final Logger logger = LoggerFactory.getLogger(GradeController.class);
-	@Autowired
 	private DAO dao;
+	
+	public GradeController(DAO dao) {
+		// TODO Auto-generated constructor stub
+		this.dao = dao;
+	}
 		
 	@RequestMapping(value = "/GiveGradeToAStudent", method = RequestMethod.POST)
 	public ModelAndView giveGradeToAStudent(@RequestParam("studentID") String studentID, @RequestParam("grade") String grade) {
